@@ -1,0 +1,23 @@
+// tsconfig.json
+{
+  "compilerOptions": {
+    "outDir": "./dist",	// 输出的目录
+    "module": "CommonJS",	// 指定生成哪个模块系统代码: "None"， "CommonJS"， "AMD"， "System"， "UMD"， "ES6"或 "ES2015"
+    "target": "ES2015",	// 指定 ES 目标版本，默认 ES3
+    "jsx": "react",	// 在 .tsx 文件里支持 jsx
+    "declaration": true,	// 生成相应的 .d.ts 文件
+    "removeComments": true,	// 删除所有注释，除了以 /!* 开头的版权信息。
+    "baseUrl": "./",  // 这里需要配置
+    "paths": {
+      "@/*": ["./src/*"]  // 这里需要配置
+    }
+  },
+  "include": [
+    "src/**/*",	 // 需要编译的文件
+    "typed-css.d.ts", // 有关 css 的 ts文件
+    "images.d.ts" // 有关图片的文件声明
+  ],
+  "exclude": [
+    "node_modules", // 不编译此文件夹下的文件
+  ],
+}

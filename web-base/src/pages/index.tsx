@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: lingshi
  * @Date: 2024-02-13 19:08:16
- * @LastEditTime: 2024-02-14 14:32:09
+ * @LastEditTime: 2024-02-15 13:58:13
  * @LastEditors: lingshi
  */
 import * as React from 'react';
@@ -22,7 +22,7 @@ export default (props) => {
         <div class={styles.logo}>
           <img 
             src={accountInfo?.logo || defaultPng}
-            width="60"
+            width="40"
             height="40"
           />
         </div>

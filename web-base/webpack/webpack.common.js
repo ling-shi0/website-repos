@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: lingshi
  * @Date: 2023-12-24 15:55:46
- * @LastEditTime: 2024-02-15 17:29:22
+ * @LastEditTime: 2024-02-15 17:48:40
  * @LastEditors: lingshi
  */
 const path = require('path');
@@ -46,12 +46,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [
-        '!web-theme/',
-        '!web-unity-service'
-      ]
-    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       inject: 'body'
@@ -62,21 +56,12 @@ module.exports = {
     // 我们引入组件的时候，并没有加后缀(.tsx)，
     // 此配置会按顺序为我们找App.js App.jsx...找到就返回，找不到会报错
     alias: {
-      '@': path.resolve(__dirname, "src")
+      '@': path.resolve(__dirname, "../src")
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.css', '.less', '.scss']
   },
   output:{
     filename: 'bundle.js',
     path: path.resolve(__dirname,'../web-repos-build-result')
-  },
-  devServer:{
-    host: '127.0.0.1',
-    static: {
-      directory: path.join(__dirname, 'cache'), //借助devServer生成服务器放到dist目录下，但是dist目录下看不到任何东西，在内存中，这样可以提升速度
-    },
-    compress: true,
-    port: 8088,
-    open: true,  //可以自动打开网址不必手动打开
-  },
+  }
 }

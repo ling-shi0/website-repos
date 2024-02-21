@@ -15,7 +15,8 @@
   "include": [
     "src/**/*",	 // 需要编译的文件
     "typed-css.d.ts", // 有关 css 的 ts文件
-    "images.d.ts" // 有关图片的文件声明
+    "images.d.ts", // 有关图片的文件声明
+    "process-env.d.ts", // 有关全局变量的声明
   ],
   "exclude": [
     "node_modules", // 不编译此文件夹下的文件

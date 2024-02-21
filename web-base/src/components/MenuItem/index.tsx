@@ -2,15 +2,17 @@
  * @Description: 
  * @Author: lingshi
  * @Date: 2024-02-11 21:02:58
- * @LastEditTime: 2024-02-13 20:02:19
+ * @LastEditTime: 2024-02-21 15:37:09
  * @LastEditors: lingshi
  */
-import * as react from 'react';
+import * as React from 'react';
+import type { menuItemProps } from '@/types';
 
-export declare type menuItemProps = {
 
-}
-
-export const MenuItem = (props: menuItemProps) => {
-
+export const MenuItem = (props: React.PropsWithChildren<menuItemProps>) => {
+  return (
+    <div>
+      {props.children}
+    </div>
+  )
 }

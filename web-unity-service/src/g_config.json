@@ -1,10 +1,113 @@
 {
-  "apps": [],
-  "extensions": [],
-  "libs": [
-    "ThemeController"
+  "apps": [
+    {
+      "bundleName": "com.bundle.package.tech",
+      "displayName": "技术专区微应用",
+      "entryPoint": "Technology",
+      "name": "Technology",
+      "resources": [{
+          "type": "css",
+          "url": "index.css"
+      }],
+      "routePath": "/technology",
+      "uuid": "com.bundle.package.tech.Technology"
+    },
+    {
+      "bundleName": "com.bundle.package.thinking",
+      "displayName": "个人思考微应用",
+      "entryPoint": "Thinking",
+      "name": "Thinking",
+      "resources": [{
+          "type": "css",
+          "url": "index.css"
+      }],
+      "routePath": "/thinking",
+      "uuid": "com.bundle.package.tech.Thinking"
+    },
+    {
+      "bundleName": "com.bundle.package.activity",
+      "displayName": "整活专区微应用",
+      "entryPoint": "Activity",
+      "name": "Activity",
+      "resources": [{
+          "type": "css",
+          "url": "index.css"
+      }],
+      "routePath": "/activity",
+      "uuid": "com.bundle.package.tech.Activity"
+    }
   ],
-  "accountInfo": [],
-  "workbenchMenu": [],
-  "bundle": []
+  "extensions": [
+    {
+      "bundleName": "com.bundle.package.tech",
+      "displayName": "技术专区插件尝试",
+      "entryPoint": "Try",
+      "name": "Try",
+      "resources": [{
+          "type": "css",
+          "url": "index.css"
+      }],
+      "uuid": "com.bundle.package.tech.Try"
+    }
+  ],
+  "libs": [
+    {
+      "libName": "ThemeController",
+      "type": "self",
+      "preload": true
+    },
+    {
+      "libName": "antd",
+      "type": "remote",
+      "url": "",
+      "preload": true
+    }
+  ],
+  "accountInfo": {
+    "managerName": "王小铭",
+    "email": "qixiaojin2015@sina.com"
+  },
+  "workbenchMenu": [
+    {
+      "title": "技术",
+      "key": "technology",
+      "url": "app://com.bundle.package.tech.Technology"
+    },
+    {
+      "title": "个人思考",
+      "key": "thinking",
+      "url": "app://com.bundle.package.thinking.Thinking"
+    },
+    {
+      "title": "整活专区",
+      "key": "activity",
+      "url": "app://com.bundle.package.activity.Activity"
+    },
+    {
+      "title": "备用专区",
+      "key": "spare",
+      "hidden": true
+    }
+  ],
+  "bundle": [
+    {
+      "bundleName": "com.bundle.package.tech",
+      "modulePath": "index.js",
+      "url": "packages://web-sub-tech",
+      "version": "0.0.1"
+    },
+    {
+      "bundleName": "com.bundle.package.thinking",
+      "modulePath": "index.js",
+      "url": "packages://web-sub-thinking",
+      "version": "0.0.1"
+    },
+    {
+      "bundleName": "com.bundle.package.activity",
+      "modulePath": "index.js",
+      "url": "packages://web-sub-activity",
+      "version": "0.0.1"
+    }
+  ],
+  "baseFileHost": "https://ling-shi0.github.io/"
 }

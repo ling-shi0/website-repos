@@ -1,13 +1,116 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 module.exports={
-  "apps": [],
-  "extensions": [],
-  "libs": [
-    "ThemeController"
+  "apps": [
+    {
+      "bundleName": "com.bundle.package.tech",
+      "displayName": "技术专区微应用",
+      "entryPoint": "Technology",
+      "name": "Technology",
+      "resources": [{
+          "type": "css",
+          "url": "index.css"
+      }],
+      "routePath": "/technology",
+      "uuid": "com.bundle.package.tech.Technology"
+    },
+    {
+      "bundleName": "com.bundle.package.thinking",
+      "displayName": "个人思考微应用",
+      "entryPoint": "Thinking",
+      "name": "Thinking",
+      "resources": [{
+          "type": "css",
+          "url": "index.css"
+      }],
+      "routePath": "/thinking",
+      "uuid": "com.bundle.package.tech.Thinking"
+    },
+    {
+      "bundleName": "com.bundle.package.activity",
+      "displayName": "整活专区微应用",
+      "entryPoint": "Activity",
+      "name": "Activity",
+      "resources": [{
+          "type": "css",
+          "url": "index.css"
+      }],
+      "routePath": "/activity",
+      "uuid": "com.bundle.package.tech.Activity"
+    }
   ],
-  "accountInfo": [],
-  "workbenchMenu": [],
-  "bundle": []
+  "extensions": [
+    {
+      "bundleName": "com.bundle.package.tech",
+      "displayName": "技术专区插件尝试",
+      "entryPoint": "Try",
+      "name": "Try",
+      "resources": [{
+          "type": "css",
+          "url": "index.css"
+      }],
+      "uuid": "com.bundle.package.tech.Try"
+    }
+  ],
+  "libs": [
+    {
+      "libName": "ThemeController",
+      "type": "self",
+      "preload": true
+    },
+    {
+      "libName": "antd",
+      "type": "remote",
+      "url": "",
+      "preload": true
+    }
+  ],
+  "accountInfo": {
+    "managerName": "王小铭",
+    "email": "qixiaojin2015@sina.com"
+  },
+  "workbenchMenu": [
+    {
+      "title": "技术",
+      "key": "technology",
+      "url": "app://com.bundle.package.tech.Technology"
+    },
+    {
+      "title": "个人思考",
+      "key": "thinking",
+      "url": "app://com.bundle.package.thinking.Thinking"
+    },
+    {
+      "title": "整活专区",
+      "key": "activity",
+      "url": "app://com.bundle.package.activity.Activity"
+    },
+    {
+      "title": "备用专区",
+      "key": "spare",
+      "hidden": true
+    }
+  ],
+  "bundle": [
+    {
+      "bundleName": "com.bundle.package.tech",
+      "modulePath": "index.js",
+      "url": "packages://web-sub-tech",
+      "version": "0.0.1"
+    },
+    {
+      "bundleName": "com.bundle.package.thinking",
+      "modulePath": "index.js",
+      "url": "packages://web-sub-thinking",
+      "version": "0.0.1"
+    },
+    {
+      "bundleName": "com.bundle.package.activity",
+      "modulePath": "index.js",
+      "url": "packages://web-sub-activity",
+      "version": "0.0.1"
+    }
+  ],
+  "baseFileHost": "https://ling-shi0.github.io/"
 }
 },{}],2:[function(require,module,exports){
 "use strict";
@@ -21,10 +124,10 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); } /*
- * @Description: 
+ * @Description:
  * @Author: lingshi
  * @Date: 2024-02-15 16:41:27
- * @LastEditTime: 2024-02-16 15:59:38
+ * @LastEditTime: 2024-02-21 15:18:32
  * @LastEditors: lingshi
  */
 var BaseServices = /*#__PURE__*/function () {
@@ -64,6 +167,11 @@ var BaseServices = /*#__PURE__*/function () {
     value: function getServices(name) {
       return this.services[name];
     }
+  }, {
+    key: "getBootstrapConfig",
+    value: function getBootstrapConfig() {
+      return globalThis[this.bootstrapConfigSymbol];
+    }
   }], [{
     key: "getInstance",
     value: function getInstance() {
@@ -75,7 +183,7 @@ var BaseServices = /*#__PURE__*/function () {
   }]);
   return BaseServices;
 }();
-globalThis['web-base-services'] = BaseServices.getInstance();
+globalThis["web-base-services"] = BaseServices.getInstance();
 
 },{"./g_config.json":1,"./symbols":3}],3:[function(require,module,exports){
 "use strict";

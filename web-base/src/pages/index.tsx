@@ -2,23 +2,22 @@
  * @Description: 
  * @Author: lingshi
  * @Date: 2024-02-13 19:08:16
- * @LastEditTime: 2024-02-21 13:15:55
+ * @LastEditTime: 2024-02-28 21:52:20
  * @LastEditors: lingshi
  */
 import * as React from 'react';
+import { useState } from 'react';
 import cn from 'classnames';
 import { ManualMenu } from '@/components/ManualMenu/index';
 import { NavTabs } from '@/components/NavTabs';
-import { RemoteContainer } from '@/components/RemoteContainer'; 
-import styles from './index.module.scss';
+import { RemoteContainer } from '@/components/RemoteContainer';
+import { ExtensionsSpan } from '@/components/ExtensionsSpan';
 import { useGetMenu } from '@/hooks/useGetMunu';
-import { useGetG_Config } from '@/hooks/useGetG_Config';
-import defaultPng from '@/assets/default.png';
+import styles from './index.module.scss';
 
 export default (props) => {
   const menuConfig = useGetMenu();
-  const g_config = useGetG_Config();
-  const { accountInfo } = g_config;
+  const [activeKey, setActiveKey] = useState<string>('technology');
 
   return (
     <div
@@ -27,23 +26,25 @@ export default (props) => {
       <div className={styles.leftPane}>
         <div className={cn(styles.logo, styles.section)}>
           小铭
-          <img 
-            src={accountInfo?.logo || defaultPng}
-            width="40"
-            height="40"
-          />
         </div>
         <div
           className={cn(styles.menu, styles.section)}
         >
           <ManualMenu
+            activeKey={activeKey}
+            setActiveKey={setActiveKey}
             menuConfig={menuConfig}
           />
         </div>
       </div>
       <div className={styles.rightPane}>
         <div className={cn(styles.tabs, styles.section)}>
-          <NavTabs />
+          <NavTabs 
+            activeKey={activeKey} 
+            setActiveKey={setActiveKey}
+            menuConfig={menuConfig}
+          />
+          <ExtensionsSpan />
         </div>
         <div className={cn(styles.contentContainer, styles.section)}>
           <RemoteContainer menuConfig={menuConfig} />

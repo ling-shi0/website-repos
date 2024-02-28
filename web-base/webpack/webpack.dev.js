@@ -2,7 +2,7 @@
  * @Description:
  * @Author: lingshi
  * @Date: 2023-12-24 15:55:46
- * @LastEditTime: 2024-02-21 15:09:25
+ * @LastEditTime: 2024-02-25 23:41:49
  * @LastEditors: lingshi
  */
 const webpack = require("webpack");
@@ -25,5 +25,10 @@ module.exports = merge(common, {
     compress: true,
     port: 8088,
     open: true,
+  },
+  externals: {
+    // antd: "antd",
+    React: "react",
+    ReactDom: "react-dom",
   },
 });

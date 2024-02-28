@@ -2,7 +2,7 @@
  * @Description:
  * @Author: lingshi
  * @Date: 2023-12-24 15:55:46
- * @LastEditTime: 2024-02-21 14:17:43
+ * @LastEditTime: 2024-02-25 21:11:58
  * @LastEditors: lingshi
  */
 const path = require("path");
@@ -57,6 +57,6 @@ module.exports = {
   },
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "../web-repos-build-result"),
+    path: path.resolve(__dirname, "../../web-repos-build-result"),
   },
 };

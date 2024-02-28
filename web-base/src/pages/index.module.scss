@@ -53,6 +53,8 @@
     width: calc(100% - var(--workbench-menu-width, 120px));
     height: 100%;
     .tabs {
+      display: flex;
+      justify-content: space-between;
       height: var(--workbench-tabs-height, 60px);
     }
     .contentContainer {

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: lingshi
  * @Date: 2024-02-21 11:59:39
- * @LastEditTime: 2024-02-21 16:02:17
+ * @LastEditTime: 2024-02-27 11:12:22
  * @LastEditors: lingshi
  */
 import * as React from 'react';
@@ -31,7 +31,7 @@ export const loadRemoteApp: any = (info: appTypes | null | undefined) => {
       />
     )
   }
-  return <div>123</div>
+  return <div>暂无此应用哦～～～</div>
 }
 
 export const RemoteContainer = (props: any) => {

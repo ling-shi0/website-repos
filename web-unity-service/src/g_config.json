@@ -6,8 +6,8 @@
       "entryPoint": "Technology",
       "name": "Technology",
       "resources": [{
-          "type": "css",
-          "url": "index.css"
+        "type": "css",
+        "url": "index.css"
       }],
       "routePath": "/technology",
       "uuid": "com.bundle.package.tech.Technology"
@@ -54,13 +54,52 @@
     {
       "libName": "ThemeController",
       "type": "self",
-      "preload": true
+      "preload": true,
+      "url": "web-theme/index"
+    },
+    {
+      "libName": "react",
+      "type": "remote",
+      "preload": true,
+      "resources": [
+        {
+          "type": "js",
+          "url": "https://cdn.bootcdn.net/ajax/libs/react/18.2.0/umd/react.production.min.js"
+        }
+      ]
+    },
+    {
+      "libName": "react-dom",
+      "type": "remote",
+      "preload": true,
+      "resources": [
+        {
+          "type": "js",
+          "url": "https://cdn.bootcdn.net/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"
+        }
+      ]
+    },
+    {
+      "libName": "dayjs",
+      "type": "remote",
+      "preload": true,
+      "resources": [
+        {
+          "type": "js",
+          "url": "https://cdn.bootcdn.net/ajax/libs/dayjs/1.11.9/dayjs.min.js"
+        }
+      ]
     },
     {
       "libName": "antd",
       "type": "remote",
-      "url": "",
-      "preload": true
+      "preload": true,
+      "resources": [
+        {
+          "type": "js",
+          "url": "https://cdn.bootcdn.net/ajax/libs/antd/5.9.0/antd.min.js"
+        }
+      ]
     }
   ],
   "accountInfo": {
@@ -69,17 +108,17 @@
   },
   "workbenchMenu": [
     {
-      "title": "技术",
+      "title": "文殊院",
       "key": "technology",
       "url": "app://com.bundle.package.tech.Technology"
     },
     {
-      "title": "个人思考",
+      "title": "养心殿",
       "key": "thinking",
       "url": "app://com.bundle.package.thinking.Thinking"
     },
     {
-      "title": "整活专区",
+      "title": "御膳房",
       "key": "activity",
       "url": "app://com.bundle.package.activity.Activity"
     },

@@ -7,8 +7,9 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _blue = _interopRequireDefault(require("../themes/blue.json"));
 var _green = _interopRequireDefault(require("../themes/green.json"));
-var _white = _interopRequireDefault(require("../themes/white.json"));
+var _orange = _interopRequireDefault(require("../themes/orange.json"));
 var _pink = _interopRequireDefault(require("../themes/pink.json"));
+var _cyan = _interopRequireDefault(require("../themes/cyan.json"));
 var _default = _interopRequireDefault(require("../themes/default.json"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -23,7 +24,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
  * @Description:
  * @Author: lingshi
  * @Date: 2024-02-17 15:25:39
- * @LastEditTime: 2024-02-20 13:49:29
+ * @LastEditTime: 2024-02-28 14:09:02
  * @LastEditors: lingshi
  */
 var AbstractTheme = exports["default"] = /*#__PURE__*/function () {
@@ -31,10 +32,31 @@ var AbstractTheme = exports["default"] = /*#__PURE__*/function () {
     _classCallCheck(this, AbstractTheme);
     this.currentTheme = props && props.theme || "blue";
     this.themeMap = {
-      blue: _blue["default"],
-      pink: _pink["default"],
-      white: _white["default"],
-      green: _green["default"]
+      blue: {
+        color: _blue["default"],
+        title: "拂晓蓝",
+        example: _blue["default"]["--primary-color"]
+      },
+      pink: {
+        color: _pink["default"],
+        title: "法式洋红",
+        example: _pink["default"]["--primary-color"]
+      },
+      orange: {
+        color: _orange["default"],
+        title: "金盏花",
+        example: _orange["default"]["--primary-color"]
+      },
+      green: {
+        color: _green["default"],
+        title: "极光绿",
+        example: _green["default"]["--primary-color"]
+      },
+      cyan: {
+        color: _cyan["default"],
+        title: "明青",
+        example: _cyan["default"]["--primary-color"]
+      }
     };
     this.computedThemeKeys = ["--primary-color"];
     this.computedLevels = 5;
@@ -68,7 +90,7 @@ var AbstractTheme = exports["default"] = /*#__PURE__*/function () {
   }, {
     key: "getThemeJson",
     value: function getThemeJson(theme) {
-      return this.themeMap[theme];
+      return this.themeMap[theme].color;
     }
 
     /**
@@ -149,11 +171,24 @@ var AbstractTheme = exports["default"] = /*#__PURE__*/function () {
       for (var i = 0; i < hexs.length; i++) hexs[i] = parseInt(hexs[i], 16);
       return hexs;
     }
+  }, {
+    key: "getThemeList",
+    value: function getThemeList() {
+      var res = [];
+      for (var i in this.themeMap) {
+        res.push({
+          title: this.themeMap[i].title,
+          example: this.themeMap[i].example,
+          key: i
+        });
+      }
+      return res;
+    }
   }]);
   return AbstractTheme;
 }();
 
-},{"../themes/blue.json":5,"../themes/default.json":6,"../themes/green.json":7,"../themes/pink.json":8,"../themes/white.json":9}],2:[function(require,module,exports){
+},{"../themes/blue.json":5,"../themes/cyan.json":6,"../themes/default.json":7,"../themes/green.json":8,"../themes/orange.json":9,"../themes/pink.json":10}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -171,7 +206,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
  * @Description:
  * @Author: lingshi
  * @Date: 2024-02-17 15:18:59
- * @LastEditTime: 2024-02-20 13:34:43
+ * @LastEditTime: 2024-02-28 15:37:52
  * @LastEditors: lingshi
  */
 var CssTheme = exports["default"] = /*#__PURE__*/function () {
@@ -201,7 +236,7 @@ var CssTheme = exports["default"] = /*#__PURE__*/function () {
     value: function linkToDom(themeObj) {
       var body = document.querySelector("body");
       var newDom = document.createElement("div");
-      newDom.id = "".concat(this.prefix).concat(this.linkIndex++);
+      newDom.id = "".concat(this.prefix).concat(++this.linkIndex);
       newDom.innerHTML = "\n      <style>\n      :root {\n        ".concat(Object.keys(themeObj || {}).map(function (g) {
         return "  ".concat(g, ": ").concat(themeObj[g], ";");
       }).join("\n        "), "\n      }\n      </style>\n    ");
@@ -226,6 +261,16 @@ var CssTheme = exports["default"] = /*#__PURE__*/function () {
       var themeDom = document.querySelector("#".concat(this.prefix).concat(this.linkIndex));
       document.body.removeChild(themeDom);
     }
+  }, {
+    key: "getCurrentTheme",
+    value: function getCurrentTheme() {
+      return this.currentTheme.getCurrentTheme();
+    }
+  }, {
+    key: "getThemeList",
+    value: function getThemeList() {
+      return this.currentTheme.getThemeList();
+    }
   }]);
   return CssTheme;
 }();
@@ -248,7 +293,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
  * @Description:
  * @Author: lingshi
  * @Date: 2024-02-17 15:13:32
- * @LastEditTime: 2024-02-20 12:54:16
+ * @LastEditTime: 2024-02-28 15:38:26
  * @LastEditors: lingshi
  */
 var ThemeController = exports.ThemeController = /*#__PURE__*/function () {
@@ -268,6 +313,16 @@ var ThemeController = exports.ThemeController = /*#__PURE__*/function () {
     key: "initTheme",
     value: function initTheme() {
       this.cssTheme.initTheme();
+    }
+  }, {
+    key: "getThemeLists",
+    value: function getThemeLists() {
+      return this.cssTheme.getThemeList();
+    }
+  }, {
+    key: "getCurrentTheme",
+    value: function getCurrentTheme() {
+      return this.cssTheme.getCurrentTheme();
     }
   }], [{
     key: "getInstance",
@@ -297,22 +352,29 @@ window.ThemeController = _ThemeController.ThemeController;
 
 },{"./ThemeController":3}],5:[function(require,module,exports){
 module.exports={
-  "--primary-color": "#409eFF"
+  "--primary-color": "#1677ff"
 }
 },{}],6:[function(require,module,exports){
+module.exports={
+  "--primary-color": "#13c2c2"
+}
+},{}],7:[function(require,module,exports){
 module.exports={
   "--workbench-menu-width": "120px",
   "--section-border-radius": "8px",
   "--workbench-tabs-height": "60px",
   "--section-shadow": "0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05)"
 }
-},{}],7:[function(require,module,exports){
-module.exports={
-  "--primary-color": "",
-  "--workbench-menu-width": "56px"
-}
 },{}],8:[function(require,module,exports){
-arguments[4][7][0].apply(exports,arguments)
-},{"dup":7}],9:[function(require,module,exports){
-arguments[4][7][0].apply(exports,arguments)
-},{"dup":7}]},{},[4]);
+module.exports={
+  "--primary-color": "#52c41a"
+}
+},{}],9:[function(require,module,exports){
+module.exports={
+  "--primary-color": "#faad14"
+}
+},{}],10:[function(require,module,exports){
+module.exports={
+  "--primary-color": "#eb2f96"
+}
+},{}]},{},[4]);

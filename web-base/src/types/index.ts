@@ -2,7 +2,7 @@
  * @Description:
  * @Author: lingshi
  * @Date: 2024-02-21 13:48:59
- * @LastEditTime: 2024-02-21 15:41:06
+ * @LastEditTime: 2024-02-25 12:33:55
  * @LastEditors: lingshi
  */
 export enum libType {
@@ -10,12 +10,22 @@ export enum libType {
   Self = "self",
 }
 
+export enum resourcesTypes {
+  JS = "js",
+  CSS = "css",
+}
+
+export declare type resourcesItemType = {
+  type: resourcesTypes;
+  url: string;
+};
+
 export declare type appTypes = {
   bundleName: string;
   displayName: string;
   entryPoint: string;
   name: string;
-  resources: any[];
+  resources: resourcesItemType[];
   routePath: string;
   uuid: string;
 };
@@ -37,8 +47,8 @@ export declare type menuItemProps = {
 export declare type libsProps = {
   libName: string;
   type: libType;
-  url?: string;
   preload?: boolean;
+  resources?: resourcesItemType[];
 };
 
 export declare type g_configTypes = {

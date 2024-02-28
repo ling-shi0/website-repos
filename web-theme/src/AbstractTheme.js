@@ -2,23 +2,45 @@
  * @Description:
  * @Author: lingshi
  * @Date: 2024-02-17 15:25:39
- * @LastEditTime: 2024-02-20 13:49:29
+ * @LastEditTime: 2024-02-28 14:09:02
  * @LastEditors: lingshi
  */
 import Blue from "../themes/blue.json";
 import Green from "../themes/green.json";
-import White from "../themes/white.json";
+import Orange from "../themes/orange.json";
 import Pink from "../themes/pink.json";
+import Cyan from "../themes/cyan.json";
 import Default from "../themes/default.json";
 
 export default class AbstractTheme {
   constructor(props) {
     this.currentTheme = (props && props.theme) || "blue";
     this.themeMap = {
-      blue: Blue,
-      pink: Pink,
-      white: White,
-      green: Green,
+      blue: {
+        color: Blue,
+        title: "拂晓蓝",
+        example: Blue["--primary-color"],
+      },
+      pink: {
+        color: Pink,
+        title: "法式洋红",
+        example: Pink["--primary-color"],
+      },
+      orange: {
+        color: Orange,
+        title: "金盏花",
+        example: Orange["--primary-color"],
+      },
+      green: {
+        color: Green,
+        title: "极光绿",
+        example: Green["--primary-color"],
+      },
+      cyan: {
+        color: Cyan,
+        title: "明青",
+        example: Cyan["--primary-color"],
+      },
     };
     this.computedThemeKeys = ["--primary-color"];
     this.computedLevels = 5;
@@ -47,7 +69,7 @@ export default class AbstractTheme {
    * @return {*}
    */
   getThemeJson(theme) {
-    return this.themeMap[theme];
+    return this.themeMap[theme].color;
   }
 
   /**
@@ -121,5 +143,17 @@ export default class AbstractTheme {
     hexs = str.match(/../g);
     for (let i = 0; i < hexs.length; i++) hexs[i] = parseInt(hexs[i], 16);
     return hexs;
+  }
+
+  getThemeList() {
+    const res = [];
+    for (let i in this.themeMap) {
+      res.push({
+        title: this.themeMap[i].title,
+        example: this.themeMap[i].example,
+        key: i,
+      });
+    }
+    return res;
   }
 }

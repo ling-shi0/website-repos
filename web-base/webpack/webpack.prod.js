@@ -2,7 +2,7 @@
  * @Description:
  * @Author: lingshi
  * @Date: 2023-12-24 15:55:46
- * @LastEditTime: 2024-02-21 14:34:13
+ * @LastEditTime: 2024-02-25 19:18:23
  * @LastEditors: lingshi
  */
 const webpack = require("webpack");
@@ -27,5 +27,7 @@ module.exports = merge(common, {
   ],
   externals: {
     antd: "antd",
+    React: "react",
+    ReactDom: "react-dom",
   },
 });

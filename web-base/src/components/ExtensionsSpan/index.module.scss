@@ -1,0 +1,29 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  .weather {
+    width: 80px;
+    border: 1px solid red;
+  }
+  .avatar {
+    margin: 0 12px;
+    background: var(--primary-color);
+  }
+}
+
+.colorItemWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 150px;
+  .colorItem {
+    margin-bottom: 4px;
+    width: 100px;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+}

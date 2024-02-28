@@ -2,7 +2,7 @@
  * @Description:
  * @Author: lingshi
  * @Date: 2024-02-17 15:18:59
- * @LastEditTime: 2024-02-20 13:34:43
+ * @LastEditTime: 2024-02-28 15:37:52
  * @LastEditors: lingshi
  */
 import AbstractTheme from "./AbstractTheme.js";
@@ -30,7 +30,7 @@ export default class CssTheme {
   linkToDom(themeObj) {
     const body = document.querySelector("body");
     const newDom = document.createElement("div");
-    newDom.id = `${this.prefix}${this.linkIndex++}`;
+    newDom.id = `${this.prefix}${++this.linkIndex}`;
     newDom.innerHTML = `
       <style>
       :root {
@@ -59,5 +59,13 @@ export default class CssTheme {
   unMountFromDom() {
     const themeDom = document.querySelector(`#${this.prefix}${this.linkIndex}`);
     document.body.removeChild(themeDom);
+  }
+
+  getCurrentTheme() {
+    return this.currentTheme.getCurrentTheme();
+  }
+
+  getThemeList() {
+    return this.currentTheme.getThemeList();
   }
 }

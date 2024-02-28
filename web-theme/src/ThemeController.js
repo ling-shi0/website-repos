@@ -2,7 +2,7 @@
  * @Description:
  * @Author: lingshi
  * @Date: 2024-02-17 15:13:32
- * @LastEditTime: 2024-02-20 12:54:16
+ * @LastEditTime: 2024-02-28 15:38:26
  * @LastEditors: lingshi
  */
 import CssTheme from "./CssTheme";
@@ -21,6 +21,14 @@ export class ThemeController {
 
   initTheme() {
     this.cssTheme.initTheme();
+  }
+
+  getThemeLists() {
+    return this.cssTheme.getThemeList();
+  }
+
+  getCurrentTheme() {
+    return this.cssTheme.getCurrentTheme();
   }
 
   static getInstance() {

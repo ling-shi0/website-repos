@@ -2,7 +2,7 @@
  * @Description:
  * @Author: lingshi
  * @Date: 2024-02-22 15:43:06
- * @LastEditTime: 2024-02-26 22:28:18
+ * @LastEditTime: 2024-02-29 16:05:11
  * @LastEditors: lingshi
  */
 import { fileURLToPath, URL } from "node:url";
@@ -19,6 +19,26 @@ export default defineConfig({
       __dirname,
       "../../web-repos-build-result/package/web-sub-tech"
     ),
+    rollupOptions: {
+      output: {
+        entryFileNames: "static/js/index.js",
+        assetFileNames: (assetInfo: any) => {
+          if (
+            assetInfo.type === "asset" &&
+            /\.(jpe?g|png|gif|svg)$/i.test(assetInfo.name)
+          ) {
+            return "static/img/[name].[hash][ext]";
+          }
+          if (
+            assetInfo.type === "asset" &&
+            /\.(ttf|woff|woff2|eot)$/i.test(assetInfo.name)
+          ) {
+            return "static/fonts/[name].[hash][ext]";
+          }
+          return "static/[ext]/index.[ext]";
+        },
+      },
+    },
   },
   resolve: {
     alias: {

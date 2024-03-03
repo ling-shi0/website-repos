@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "postTitle": "初始版本规划方案",
+      "fileUrl": "posts/web-sub-tech/firstVersionProposal.md",
+      "description": "这是我个人网站第一个版本时候的设计PRD和设计方案",
+      "label": "PRD",
+      "key": "firstVersionProposal"
+    },
+    {
+      "postTitle": "测试",
+      "fileUrl": "posts/web-sub-tech/test.md",
+      "description": "测试",
+      "label": "前端",
+      "key": "test"
+    },
+    {
+      "postTitle": "测试2",
+      "fileUrl": "posts/web-sub-tech/test.md",
+      "description": "测试2",
+      "label": "前端",
+      "key": "test2"
+    },
+    {
+      "postTitle": "Live House 游记",
+      "fileUrl": "posts/web-sub-tech/livehouse游记.md",
+      "description": "Live House 游记",
+      "label": "玩耍的故事",
+      "key": "livehouse"
+    }
+  ]
+}

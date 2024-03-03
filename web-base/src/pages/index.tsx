@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: lingshi
  * @Date: 2024-02-13 19:08:16
- * @LastEditTime: 2024-02-28 21:52:20
+ * @LastEditTime: 2024-02-28 23:18:17
  * @LastEditors: lingshi
  */
 import * as React from 'react';
@@ -25,7 +25,7 @@ export default (props) => {
     >
       <div className={styles.leftPane}>
         <div className={cn(styles.logo, styles.section)}>
-          小铭
+          <span>小铭</span>のwebsite
         </div>
         <div
           className={cn(styles.menu, styles.section)}

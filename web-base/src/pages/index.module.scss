@@ -41,6 +41,10 @@
       justify-content: center;
       align-items: center;
       height: var(--workbench-tabs-height, 60px);
+      font-size: 14px;
+      span {
+        color: var(--primary-color);
+      }
     }
     .menu {
       margin-top: 20px;

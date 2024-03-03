@@ -2,7 +2,7 @@
  * @Description:
  * @Author: lingshi
  * @Date: 2023-12-24 15:55:46
- * @LastEditTime: 2024-02-25 21:11:58
+ * @LastEditTime: 2024-02-28 22:56:23
  * @LastEditors: lingshi
  */
 const path = require("path");
@@ -32,7 +32,7 @@ module.exports = {
       },
       // 处理图片的 loader
       {
-        test: /\.(jpg|png|gif)$/,
+        test: /\.(jpg|png|gif|svg)$/,
         use: {
           loader: "file-loader",
           options: {

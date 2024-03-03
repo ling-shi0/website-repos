@@ -2,18 +2,22 @@
  * @Description: 
  * @Author: lingshi
  * @Date: 2024-02-22 15:43:06
- * @LastEditTime: 2024-02-27 09:52:37
+ * @LastEditTime: 2024-02-29 16:48:43
  * @LastEditors: lingshi
 -->
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
-  <div>123</div>
   <RouterView />
 </template>
 
-<style lang="scss" scoped>
+<script setup lang="ts">
+import { onMounted } from 'vue';
+import { useRouter, RouterView } from 'vue-router';
 
-</style>
+const route = useRouter();
+
+onMounted(() => {
+  route.push('/');
+  (window as any).$wujie?.bus.$on("sub-tech-router", (path: string) => route.push(path));
+});
+
+</script>

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: lingshi
  * @Date: 2024-02-27 11:49:09
- * @LastEditTime: 2024-02-28 22:33:16
+ * @LastEditTime: 2024-03-02 23:07:48
  * @LastEditors: lingshi
  */
 import * as React from 'react';
@@ -12,7 +12,8 @@ import { BgColorsOutlined, CaretLeftOutlined } from '@ant-design/icons';
 import { useGetColors } from '@/hooks/useGetColors';
 import { useGetG_Config } from '@/hooks/useGetG_Config';
 import { WorkbenchContext } from '@/store';
-import defaultPng from '@/assets/default.png'; 
+import xiaoXin from '@/assets/xiaoxin.svg'; 
+import rainbow from '@/assets/rainbow.svg'
 import styles from './index.module.scss';
 
 const ListItem: any = List.Item;
@@ -39,12 +40,31 @@ export const ExtensionsSpan = () => {
   const selfInfo = () => {
     return (
       <List
-        size="small"
+        style={{ width: '280px' }}
+        size="large"
         header={null}
         footer={null}
         bordered
-        dataSource={[]}
-        renderItem={(item) => (<ListItem>{item}</ListItem>)}
+        itemLayout="horizontal"
+        dataSource={[
+          { 
+            title: '管理员大人', 
+            value: accountInfo.managerName 
+          },
+          {
+            title: '联系邮箱（欢迎你给我写信）', 
+            value: accountInfo.email 
+          }
+        ]}
+        renderItem={(item) => (
+          <ListItem>
+            <List.Item.Meta
+              avatar={null}
+              title={item.title}
+              description={item.value}
+            />
+          </ListItem>
+        )}
       />
     );
   }
@@ -55,9 +75,11 @@ export const ExtensionsSpan = () => {
         <Button type="primary" shape="circle" icon={<BgColorsOutlined />} />
       </Popover>
       <Popover content={selfInfo} title={null} trigger="click">
-        <Avatar className={styles.avatar} src={accountInfo?.logo || defaultPng} size={32} />
+        <Avatar className={styles.avatar} src={accountInfo?.logo || xiaoXin} size={32} />
       </Popover>
-      <div className={styles.weather}>天气</div>
+      <div className={styles.weather}>
+        {<img src={rainbow} width="80" height="60"/>}
+      </div>
     </div>
   )
 }

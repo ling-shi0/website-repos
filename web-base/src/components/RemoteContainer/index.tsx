@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: lingshi
  * @Date: 2024-02-21 11:59:39
- * @LastEditTime: 2024-02-27 11:12:22
+ * @LastEditTime: 2024-02-29 00:50:27
  * @LastEditors: lingshi
  */
 import * as React from 'react';
@@ -20,6 +20,7 @@ export const loadRemoteApp: any = (info: appTypes | null | undefined) => {
     const res = bundle.filter((bun: bundleTypes) => bun.bundleName === info.bundleName);
     if (!res[0]) return <div>暂无此应用哦～～～</div>;
     const remoteUrl = host + res[0].url.replace("packages://", "");
+    console.log(remoteUrl)
     return (
       <WujieReact 
         width="100%"
